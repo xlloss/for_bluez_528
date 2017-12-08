@@ -82,7 +82,8 @@ GIOChannel *gatt_connect(const char *src, const char *dst,
 				BT_IO_OPT_DEST_TYPE, dest_type,
 				BT_IO_OPT_CID, ATT_CID,
 				BT_IO_OPT_SEC_LEVEL, sec,
-				BT_IO_OPT_INVALID);
+				BT_IO_OPT_TIMEOUT, 2,
+                BT_IO_OPT_INVALID);
 	else
 		chan = bt_io_connect(connect_cb, NULL, NULL, &tmp_err,
 				BT_IO_OPT_SOURCE_BDADDR, &sba,
@@ -90,7 +91,8 @@ GIOChannel *gatt_connect(const char *src, const char *dst,
 				BT_IO_OPT_PSM, psm,
 				BT_IO_OPT_IMTU, mtu,
 				BT_IO_OPT_SEC_LEVEL, sec,
-				BT_IO_OPT_INVALID);
+				BT_IO_OPT_TIMEOUT, 2,
+                BT_IO_OPT_INVALID);
 
 	if (tmp_err) {
 		g_propagate_error(gerr, tmp_err);
